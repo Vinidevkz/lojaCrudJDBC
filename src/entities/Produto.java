@@ -1,13 +1,14 @@
 package entities;
 
+import java.util.Objects;
+
 public class Produto {
 	private Integer id;
 	private String name;
 	private String descricao;
 	private Categoria categoria;
 	
-	public Produto() {
-		
+	public Produto() {	
 	}
 
 	public Produto(Integer id, String name, String descricao, Categoria categoria) {
@@ -48,6 +49,23 @@ public class Produto {
 
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Produto other = (Produto) obj;
+		return Objects.equals(id, other.id);
 	}
 
 	@Override

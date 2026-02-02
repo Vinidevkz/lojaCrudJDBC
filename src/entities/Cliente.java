@@ -5,13 +5,14 @@ import java.util.List;
 import java.util.Objects;
 
 public class Cliente {
+	private static final long serialVersionUID = 1L;
+	
 	private Integer id;
 	private String name;
 	private String email;
 	private List<Produto> produtos = new ArrayList<>();  
 	
-	public Cliente() {
-		
+	public Cliente() {	
 	}
 
 	public Cliente(Integer id, String name, String email, List<Produto> produtos) {
