@@ -3,6 +3,8 @@ package model.entities;
 import java.util.Objects;
 
 public class Produto {
+	private static final long serialVersionUID = 1L;
+	
 	private Integer id;
 	private String name;
 	private String descricao;

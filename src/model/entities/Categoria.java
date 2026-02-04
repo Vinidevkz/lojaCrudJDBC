@@ -3,6 +3,8 @@ package model.entities;
 import java.util.Objects;
 
 public class Categoria {
+	private static final long serialVersionUID = 1L;
+	
 	private Integer id;
 	private String categoria;
 	

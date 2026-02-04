@@ -10,17 +10,16 @@ public class Cliente {
 	private Integer id;
 	private String name;
 	private String email;
-	private List<Produto> produtos = new ArrayList<>();  
+
 	
 	public Cliente() {	
 	}
 
-	public Cliente(Integer id, String name, String email, List<Produto> produtos) {
+	public Cliente(Integer id, String name, String email) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
-		this.produtos = produtos;
 	}
 
 	public Integer getId() {
@@ -47,14 +46,6 @@ public class Cliente {
 		this.email = email;
 	}
 
-	public List<Produto> getProdutos() {
-		return produtos;
-	}
-
-	public void setProdutos(List<Produto> produtos) {
-		this.produtos = produtos;
-	}
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -74,7 +65,7 @@ public class Cliente {
 
 	@Override
 	public String toString() {
-		return "Cliente [id=" + id + ", name=" + name + ", email=" + email + ", produtos=" + produtos + "]";
+		return "Cliente [id=" + id + ", name=" + name + ", email=" + email;
 	}
 	
 	
