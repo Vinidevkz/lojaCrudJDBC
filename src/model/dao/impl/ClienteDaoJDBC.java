@@ -23,13 +23,62 @@ public class ClienteDaoJDBC implements ClienteDao {
 
 	@Override
 	public void insert(Cliente cliente) {
-		// TODO Auto-generated method stub
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DB.getConnection();
+			
+			ps = conn.prepareStatement("INSERT INTO clientes (id, nome, email) VALUES (?, ?, ?)");
+			
+			ps.setInt(1, cliente.getId());
+			ps.setString(2, cliente.getName());
+			ps.setString(3, cliente.getEmail());
+			
+			ps.executeUpdate();
+			
+			System.out.println("Cliente cadastrado com sucesso.");
+			
+		}catch (SQLException e) {
+			e.getStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			
+		}
 		
 	}
 
 	@Override
 	public void update(Cliente cliente) {
-		// TODO Auto-generated method stub
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DB.getConnection();
+			
+			ps = conn.prepareStatement("UPDTE clientes SET nome = ? WHERE id = ?");
+			
+			ps.setString(1, cliente.getName());
+			ps.setInt(2, cliente.getId());
+			
+			rs = ps.executeQuery();
+			
+			System.out.println("Usuario atualizado com sucesso.Linhas afetadas: " + rs);
+
+		}catch (SQLException e) {
+			e.getStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 
@@ -47,7 +96,7 @@ public class ClienteDaoJDBC implements ClienteDao {
 		try {
 			conn = DB.getConnection();
 			
-			ps = conn.prepareStatement("SELECT * FROM produtos WHERE id = ?");
+			ps = conn.prepareStatement("SELECT * FROM clientes WHERE id = ?");
 			
 			ps.setInt(1, id);
 			rs = ps.executeQuery();
@@ -58,6 +107,7 @@ public class ClienteDaoJDBC implements ClienteDao {
 				cliente.setName(rs.getString("nome"));
 				cliente.setEmail(rs.getString("email"));
 				
+				return cliente;
 			}
 			return null;
 			

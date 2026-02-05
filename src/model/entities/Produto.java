@@ -8,17 +8,18 @@ public class Produto {
 	private Integer id;
 	private String name;
 	private String descricao;
-	private Categoria categoria;
+	private Double preco;
+	private Integer idCategoria;
 	
 	public Produto() {	
 	}
 
-	public Produto(Integer id, String name, String descricao, Categoria categoria) {
+	public Produto(Integer id, String name, String descricao, Integer idCategoria) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.descricao = descricao;
-		this.categoria = categoria;
+		this.idCategoria = idCategoria;
 	}
 
 	public Integer getId() {
@@ -45,12 +46,22 @@ public class Produto {
 		this.descricao = descricao;
 	}
 
-	public Categoria getCategoria() {
-		return categoria;
+
+
+	public Double getPreco() {
+		return preco;
 	}
 
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
+	public void setPreco(Double preco) {
+		this.preco = preco;
+	}
+
+	public Integer getIdCategoria() {
+		return idCategoria;
+	}
+
+	public void setIdCategoria(Integer idCategoria) {
+		this.idCategoria = idCategoria;
 	}
 
 	@Override
@@ -72,7 +83,7 @@ public class Produto {
 
 	@Override
 	public String toString() {
-		return "Produto [id=" + id + ", name=" + name + ", descricao=" + descricao + ", categoria=" + categoria + "]";
+		return "Produto [id=" + id + ", name=" + name + ", descricao=" + descricao + ", idCategoria=" + idCategoria + "]";
 	}
 	
 	
