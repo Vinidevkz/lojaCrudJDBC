@@ -14,13 +14,18 @@ public class Produto {
 	public Produto() {	
 	}
 
-	public Produto(Integer id, String name, String descricao, Integer idCategoria) {
+
+
+	public Produto(Integer id, String name, String descricao, Double preco, Integer idCategoria) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.descricao = descricao;
+		this.preco = preco;
 		this.idCategoria = idCategoria;
 	}
+
+
 
 	public Integer getId() {
 		return id;

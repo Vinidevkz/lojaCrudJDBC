@@ -54,6 +54,7 @@ public class ClienteDaoJDBC implements ClienteDao {
 	}
 
 	@Override
+	//Update name:
 	public void update(Cliente cliente) {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -84,7 +85,29 @@ public class ClienteDaoJDBC implements ClienteDao {
 
 	@Override
 	public void deleteByID(Integer id) {
-		// TODO Auto-generated method stub
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DB.getConnection();
+			
+			ps = conn.prepareStatement("DELETE FROM clientes WHERE id = ?");
+			
+			ps.setInt(1, id);
+			
+			rs = ps.executeQuery();
+			
+			System.out.println("Usuario deletado com sucesso. Linhas afetadas: " + rs);
+			
+		}catch (SQLException e) {
+			e.getStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 
