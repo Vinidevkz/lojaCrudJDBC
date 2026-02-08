@@ -14,8 +14,6 @@ public class Produto {
 	public Produto() {	
 	}
 
-
-
 	public Produto(Integer id, String name, String descricao, Double preco, Integer idCategoria) {
 		super();
 		this.id = id;
@@ -24,8 +22,6 @@ public class Produto {
 		this.preco = preco;
 		this.idCategoria = idCategoria;
 	}
-
-
 
 	public Integer getId() {
 		return id;
@@ -50,8 +46,6 @@ public class Produto {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-
-
 
 	public Double getPreco() {
 		return preco;

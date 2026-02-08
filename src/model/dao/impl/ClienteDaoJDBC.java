@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import db.DB;
@@ -40,7 +41,7 @@ public class ClienteDaoJDBC implements ClienteDao {
 			System.out.println("Cliente cadastrado com sucesso.");
 			
 		}catch (SQLException e) {
-			e.getStackTrace();
+			e.printStackTrace();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -143,8 +144,35 @@ public class ClienteDaoJDBC implements ClienteDao {
 
 	@Override
 	public List<Cliente> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		List<Cliente> clientes = new ArrayList<>();
+		
+		try {
+			conn = DB.getConnection();
+			
+			ps = conn.prepareStatement("SELECT * FROM clientes");
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Cliente cliente = new Cliente(rs.getInt("id"), rs.getString("nome"), rs.getString("email"));
+				clientes.add(cliente);
+			}
+			
+			return clientes;
+			
+		}catch (SQLException e) {
+			e.getStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+ 		return null;
 	}
 
 }

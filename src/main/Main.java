@@ -32,11 +32,18 @@ public class Main {
 		System.out.println(cliente1);
 		
 		//pegando produtos pela categoria
-		*/
+		
 		ProdutoDao produtoDao = DaoFactory.createProdutoDao();
 		Categoria categoria = new Categoria(2, "Eletrônicos"); 
 		System.out.println(produtoDao.findByCategory(categoria));
+		*/
 		
+		/////////
+		
+		//criando novo cliente:
+		ClienteDao clienteDao = DaoFactory.createClienteDao();
+		
+		System.out.println(clienteDao.findAll());
 	}
 
 }
